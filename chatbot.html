@@ -23,8 +23,18 @@
         );
     }
 
-    function ChatMessage(props) {
-        const message = props.message
+    function ChatMessage({ message, sender }) {
+        // const { message, sender } = props;
+
+        if (sender === "robot") {
+            return (
+                <div>
+                    <img src="robot.png" width="50" />
+                    { message }
+                </div>
+            )
+        }
+
         return (
             <div>
                 { message }
@@ -36,8 +46,10 @@
     const app = (
         <>
             <ChatInput />
-            <ChatMessage message="Hello Chatbot" />
-            <ChatMessage message="Hello! How can I help you?" />
+            <ChatMessage message="Hello Chatbot" sender="user" />
+            <ChatMessage message="Hello! How can I help you?" sender="robot" />
+            <ChatMessage message="Can you get me todays date?" sender="user" />
+            <ChatMessage message="Today is September 27" sender="robot" />
         </>
     );
 
