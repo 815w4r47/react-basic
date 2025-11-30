@@ -14,6 +14,8 @@
 
 <script src="https://unpkg.com/supersimpledev/babel.js"></script>
 <script type="text/babel">
+    // import React from "react";
+
     function ChatInput() {
         return (
             <>
@@ -52,36 +54,37 @@
     }
 
     function ChatMessages() {
-        const chatMessages = [ {
-            message: "Hello Chatbot",
-            sender: "user",
-            id: "id1"
-        }, {
-            message: "Hello! How can I help you?",
-            sender: "robot",
-            id: "id2"
-        }, {
-            message: "Can you get me today's date?",
-            sender: "user",
-            id: "id3"
-        }, {
-            message: "Today is September 27",
-            sender: "robot",
-            id: "id4"
-        } ];
+        const array = React.useState( [
+            {
+                message: "Hello Chatbot",
+                sender: "user",
+                id: "id1"
+            }, {
+                message: "Hello! How can I help you?",
+                sender: "robot",
+                id: "id2"
+            }, {
+                message: "Can you get me today's date?",
+                sender: "user",
+                id: "id3"
+            }, {
+                message: "Today is September 27",
+                sender: "robot",
+                id: "id4"
+            } ] );
+        const [ chatMessages, setChatMessages ] = array;
 
         function SendMessage() {
-            chatMessages.push({
+            setChatMessages( [ ...chatMessages, {
                 message: "test",
                 sender: "user",
                 id: crypto.randomUUID()
-            });
-            console.log(chatMessages);
+            } ] );
         }
 
         return (
             <>
-                <button onClick={SendMessage}>Send message</button>
+                <button onClick={ SendMessage }>Send message</button>
                 { chatMessages.map( ( chatMessage ) => {
                     return (
                         <ChatMessage
