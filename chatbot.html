@@ -15,6 +15,13 @@
             cursor: pointer;
             font-size: 15px;
         }
+
+        .chat-input {
+            padding: 12px 15px;
+            border-radius: 10px;
+            border-width: 1px;
+            font-size: 15px;
+        }
     </style>
 </head>
 
@@ -60,6 +67,7 @@
                     size="30"
                     onChange={ saveInputText }
                     value={inputText}
+                    className="chat-input"
                 />
                 <button
                     onClick={ sendMessage }
